@@ -9,9 +9,9 @@ services:
     volumes:
       # - /home/pi/:/home/pi/
       - /opt/vc: /opt/vc
-    devices:
-      - /dev/vchiq:/dev/vchiq
       - ./python:/PiCameraNotifier
+    devices:
+      - "/dev/vchiq:/dev/vchiq"
     ports:
       - 8080:80
     environment:
