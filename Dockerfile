@@ -11,4 +11,4 @@ RUN apt-get -y update && apt-get -y upgrade
 #RUN pip install picamera
 RUN pip install pushbullet.py
 
-CMD [ "python"]
+CMD ["python"]
