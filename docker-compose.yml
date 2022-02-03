@@ -2,13 +2,20 @@ version: '3'
 
 services:
   camera:
-    build: .
+    container_name: camera
+    build: 
+      context: .
+      dockerfile: Dockerfile
     volumes:
-      - /home/pi/:/home/pi/
+      # - /home/pi/:/home/pi/
+      - /opt/vc: /opt/vc
     devices:
       - /dev/vchiq:/dev/vchiq
+      - ./python:/PiCameraNotifier
     ports:
       - 8080:80
+    environment:
+       LD_LIBRARY_PATH: /opt/vc/lib
     command: python PiCameraNotifier/main.py
     privileged: true
     tty: true
