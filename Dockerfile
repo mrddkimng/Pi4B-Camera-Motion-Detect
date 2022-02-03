@@ -1,4 +1,4 @@
-FROM arm32v7/python:3.7-buster
+FROM masawaka1/buster
 
 #ADD main.py /
 #RUN apt-get -y update 
