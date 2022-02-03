@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  camera:
+    build:
+      #context: ./camera
+    volumes:
+      - /home/pi/:/home/pi/
+    devices:
+      - /dev/vchiq:/dev/vchiq
+    ports:
+      - 8080:80
+    privileged: true
+    tty: true

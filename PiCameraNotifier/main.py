@@ -15,11 +15,11 @@ import logging
 
 #========= Customisable Parameters ======
 #PUSHBULLET_KEY='enter_your_pushbullet_key_here'
-PUSHBULLET_KEY = 'o.FjzdLl1ufpMuOuWD7WQmnOZVKrTiM1vP' 
+PUSHBULLET_KEY = 'o.2mDwEzf739xQ6BtHPi9sPX7D1C05gIkS'#'o.FjzdLl1ufpMuOuWD7WQmnOZVKrTiM1vP' 
 
 #========= Global variables ========
-CAMERA_OUT_PATH = '/home/pi/Desktop/'
-WORKING_DIR="/home/pi/Desktop/PiCameraNotifier/"
+CAMERA_OUT_PATH = '/home/pi/'
+WORKING_DIR="/home/pi/PiCameraNotifier/"
 LOG_FILE_PATH=WORKING_DIR+'run.log'
 VIDEO_RECORDING_PORT=1
 MOTION_ANALYSIS_PORT=2
@@ -51,7 +51,7 @@ notificationHandler = NotificationHandler(PUSHBULLET_KEY,didReceiveCommand)
 class DetectMotion(picamera.array.PiMotionAnalysis):
 	def analyse(self,a):
 		a = np.sqrt(np.square(a['x'].astype(np.float)) + np.square(a['y'].astype(np.float))).clip(0, 255).astype(np.uint8)
-		if(a > 60).sum() > 10:
+		if(a > 60).sum() > 100:
 			logging.info("motion just detected")
 			print("motion just detected")
 			didDetectMotion()	
