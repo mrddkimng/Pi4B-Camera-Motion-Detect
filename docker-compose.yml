@@ -2,8 +2,8 @@ version: '3'
 
 services:
   camera:
-    #build:
-      #context: ./camera
+    build:
+      - context: ./camera
     volumes:
       - /home/pi/:/home/pi/
     devices:
