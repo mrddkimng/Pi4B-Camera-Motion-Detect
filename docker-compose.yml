@@ -9,5 +9,6 @@ services:
       - /dev/vchiq:/dev/vchiq
     ports:
       - 8080:8080
+    command: python /PiCameraNotifier/main.py
     privileged: true
     tty: true
