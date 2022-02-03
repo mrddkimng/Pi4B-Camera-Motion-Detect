@@ -1,4 +1,4 @@
-FROM FROM arm32v7/python:3.7.3-buster
+FROM arm32v7/python:3.7.3-buster
 
 #ADD PiCameraNotifier/ main.py /
 #RUN apt-get -y update 
