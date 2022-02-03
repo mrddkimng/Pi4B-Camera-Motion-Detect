@@ -7,9 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      # - /home/pi/:/home/pi/
-      - /opt/vc: /opt/vc
-      - ./python:/PiCameraNotifier
+      - /opt/vc:/opt/vc
     devices:
       - "/dev/vchiq:/dev/vchiq"
     ports:
