@@ -1,6 +1,6 @@
 FROM arm32v7/python:3.7-buster
 
-ADD main.py /
+#ADD main.py /
 #RUN apt-get -y update 
 #RUN apt-get -y install software-properties-common
 #RUN apt-add-repository 'deb http://raspbian.raspberrypi.org/raspbian/ buster main contrib non-free rpi firmware'
