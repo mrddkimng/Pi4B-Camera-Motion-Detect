@@ -11,4 +11,5 @@ RUN apt-get -y update && apt-get -y upgrade
 #RUN pip install picamera
 RUN pip install pushbullet.py
 
-CMD ["python"]
+WORKDIR /home/pi/Pi4B-Camera-Motion-Detect/PiCameraNotifier
+CMD ["python", "/main.py"]
