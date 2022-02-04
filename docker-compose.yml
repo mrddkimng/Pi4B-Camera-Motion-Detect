@@ -8,12 +8,13 @@ services:
       dockerfile: Dockerfile
     volumes:
       - /opt/vc:/opt/vc
+      - ./PiCameraNotifier:/PiCameraNotifier
     devices:
       - "/dev/vchiq:/dev/vchiq"
-    ports:
-      - 8080:80
+    #ports:
+    #  - 8080:80
     environment:
        LD_LIBRARY_PATH: /opt/vc/lib
-    #command: python PiCameraNotifier/main.py
+    command: python PiCameraNotifier/main.py
     privileged: true
     tty: true

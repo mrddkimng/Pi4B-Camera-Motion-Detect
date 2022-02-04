@@ -1,4 +1,4 @@
-FROM masawaka1/buster
+FROM arm32v7/python:3.7-buster
 
 #ADD main.py /
 #RUN apt-get -y update 
@@ -11,5 +11,5 @@ RUN apt-get -y update && apt-get -y upgrade
 #RUN pip install picamera
 RUN pip install pushbullet.py
 
-WORKDIR /home/pi/Pi4B-Camera-Motion-Detect/PiCameraNotifier
+#WORKDIR /home/pi/Pi4B-Camera-Motion-Detect/PiCameraNotifier
 #CMD ["python", "./main.py"]
