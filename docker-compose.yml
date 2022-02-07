@@ -16,6 +16,6 @@ services:
     environment:
       - LD_LIBRARY_PATH=/opt/vc/lib
       - FROM_PB_KEY=o.2mDwEzf739xQ6BtHPi9sPX7D1C05gIkS
-    command: python PiCameraNotifier/main.py
+    #command: python PiCameraNotifier/main.py
     privileged: true
     tty: true
