@@ -15,11 +15,11 @@ import logging
 
 #========= Customisable Parameters ======
 #PUSHBULLET_KEY='enter_your_pushbullet_key_here'
-PUSHBULLET_KEY = 'o.2mDwEzf739xQ6BtHPi9sPX7D1C05gIkS'#'o.FjzdLl1ufpMuOuWD7WQmnOZVKrTiM1vP' 
+PUSHBULLET_KEY = os.environ['FROM_PB_KEY'] #'o.FjzdLl1ufpMuOuWD7WQmnOZVKrTiM1vP' 
 
 #========= Global variables ========
-CAMERA_OUT_PATH = '/home/pi/'
-WORKING_DIR="/home/pi/PiCameraNotifier/"
+CAMERA_OUT_PATH = '/'
+WORKING_DIR="/"
 LOG_FILE_PATH=WORKING_DIR+'run.log'
 VIDEO_RECORDING_PORT=1
 MOTION_ANALYSIS_PORT=2
@@ -51,7 +51,7 @@ notificationHandler = NotificationHandler(PUSHBULLET_KEY,didReceiveCommand)
 class DetectMotion(picamera.array.PiMotionAnalysis):
 	def analyse(self,a):
 		a = np.sqrt(np.square(a['x'].astype(np.float)) + np.square(a['y'].astype(np.float))).clip(0, 255).astype(np.uint8)
-		if(a > 60).sum() > 100:
+		if(a > 60).sum() > 100):
 			logging.info("motion just detected")
 			print("motion just detected")
 			didDetectMotion()	
@@ -71,7 +71,7 @@ def didDetectMotion():
 			fileName=time.strftime("%Y%m%d_%I:%M:%S%p")  # '20170424_12:53:15AM'
 			logging.info("push image...")
 			captureImage(fileName)
-			camera.wait_recording(7)
+			camera.wait_recording(15) #7
 			writeVideo(fileName)
 			isRecordingMotion = False
 
@@ -94,7 +94,7 @@ def writeVideo(fileName):
 	with stream.lock:
 		stream.copy_to(filePath)
 	# convert from h264 to mp4
-	outputFilePath=CAMERA_OUT_PATH+fileName+'.mp4'
+	outputFilePath=CAMERA_OUT_PATH+fileName+'.mp4' #'.mp4'
 	logging.info("convert from h264 to mp4...")
 	subprocess.check_call(["ffmpeg", '-framerate', '24', '-i', filePath, '-c', 'copy', outputFilePath])
 	pushData = {'type': 'VIDEO_MESSAGE', 'filePath': outputFilePath, 'fileName': fileName+'.mp4'}
