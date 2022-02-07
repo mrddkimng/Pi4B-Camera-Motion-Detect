@@ -18,8 +18,8 @@ import logging
 PUSHBULLET_KEY = os.environ['FROM_PB_KEY'] #'o.FjzdLl1ufpMuOuWD7WQmnOZVKrTiM1vP' 
 
 #========= Global variables ========
-CAMERA_OUT_PATH = '/'
-WORKING_DIR="/"
+CAMERA_OUT_PATH = './'
+WORKING_DIR="./"
 LOG_FILE_PATH=WORKING_DIR+'run.log'
 VIDEO_RECORDING_PORT=1
 MOTION_ANALYSIS_PORT=2
@@ -80,16 +80,16 @@ def captureImage(fileName):
 	global notificationHandler
 	camera.annotate_text = fileName
 	filePath=CAMERA_OUT_PATH+fileName+'.jpg'
-	logging.info("capture still image to file: ", filePath)
+	logging.info("capture still image to file: %s", filePath)
 	camera.capture(filePath)
 	pushData = {'type': 'IMAGE_MESSAGE', 'filePath': filePath, 'fileName': fileName+'.jpg'}
-	logging.info("push image data :", pushData)
+	logging.info("push image data :%s", pushData)
 	notificationHandler.pushToMobile(pushData)
 
 def writeVideo(fileName):
 	global stream
 	global notificationHandler
-	logging.info('Writing video with fileName: ', fileName)
+	logging.info('Writing video with fileName: %s', fileName)
 	filePath=CAMERA_OUT_PATH+fileName+'.h264'
 	with stream.lock:
 		stream.copy_to(filePath)
