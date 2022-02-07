@@ -2,12 +2,14 @@
 
 This project requires Raspberry Pi OS (Legacy) [Debian Buster].
 
-Quick setup
+Below is a guide for quick setup. 
 
   ## Setup Pushbullet account
   
   > Register for a Pushbullet account.
+  >
   > Under Settings -> Account, create an API access token.
+  >
   > Record and note down API access token.
 
   ## Install and prepare Docker 
@@ -52,7 +54,6 @@ Quick setup
 
   ```
   python PiCameraNotifier/main.py
-
   ```
   
   ## Troubleshooting
@@ -61,12 +62,10 @@ Quick setup
 
   ```
   docker-compose down
-
   ```
 
   Remove all Docker containers
 
   ```
   docker rm -f $(docker ps -a -q)
-
   ```
