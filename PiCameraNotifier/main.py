@@ -51,7 +51,7 @@ notificationHandler = NotificationHandler(PUSHBULLET_KEY,didReceiveCommand)
 class DetectMotion(picamera.array.PiMotionAnalysis):
 	def analyse(self,a):
 		a = np.sqrt(np.square(a['x'].astype(np.float)) + np.square(a['y'].astype(np.float))).clip(0, 255).astype(np.uint8)
-		if(a > 60).sum() > 100):
+		if(a > 60).sum() > 100:
 			logging.info("motion just detected")
 			print("motion just detected")
 			didDetectMotion()	
